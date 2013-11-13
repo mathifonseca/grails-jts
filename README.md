@@ -3,15 +3,17 @@ Grails Plugin for JTS integration
 
 This plugin provides topology operations support for Grails application provided by JTS, an API of 2D spatial predicates and functions developed by Vivid Solutions, Inc.
 
-With this plugin you can create Points, Triangles, Polygons and almost any Geometry you need for your application.
+With this plugin you can create instances of `Point`, `Triangle`, `Polygon` and almost any `Geometry` you need for your application.
 
 Also, you can perform spacial analysis operations like union, intersection or difference.
 
-The most common use case is defining a Polygon representing an area of the map and then checking if some Point is within or without that area by providing its coordinates.
+The most common use case is defining a `Polygon` representing an area of the map and then checking if some `Point` is within or without that area by providing its coordinates.
 
 Please check the JTS JavaDoc [here](http://www.vividsolutions.com/jts/javadoc/index.html)
 
-As a start, I've created a `Service` with a single method for creating Points from a pair of coordinates. You should use it like this:
+For more information about JTS in general, please visit its main page [here](http://www.vividsolutions.com/jts/JTSHome.htm)
+
+As a start, I've created a `Service` with a single method for creating a `Point` from a pair of coordinates. You should use it like this:
 
 ```groovy
 class YourService {
