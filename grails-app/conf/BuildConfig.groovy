@@ -12,6 +12,7 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
+		compile 'com.vividsolutions:jts:1.13'
 	}
 
 	plugins {
