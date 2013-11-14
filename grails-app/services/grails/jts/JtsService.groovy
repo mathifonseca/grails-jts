@@ -1,39 +1,31 @@
 package grails.jts
 
-import com.vividsolutions.jts.geom.Point
 import com.vividsolutions.jts.geom.Coordinate
 import com.vividsolutions.jts.geom.GeometryFactory
+import com.vividsolutions.jts.geom.Point
 
 class JtsService {
 
 	static transactional = false
 
-    Point createPoint(Double lat, Double lng) {
+	Point createPoint(Double lat, Double lng) {
 
-    	def point
+		if (!lat || !lng) {
+			log.error "Cannot create point with data provided -> lat: ${lat} - lng: ${lng}"
+			return null
+		}
 
-    	try {
+		try {
+			def gf = new GeometryFactory()
 
-    		if (!lat || !lng) {
+			def coord = new Coordinate(lat, lng)
 
-    			log.error "Cannot create point with data provided -> lat: ${lat} - lng: ${lng}"
+			return gf.createPoint(coord)
 
-    		} else {
+		} catch (Exception ex) {
 
-		    	def gf = new GeometryFactory()
+			log.error "Could not create a point!", ex
 
-		        def coord = new Coordinate(lat, lng)
-
-		        point = gf.createPoint(coord)
-
-		    }
-
-	    } catch (Exception ex) {
-
-	    	log.error "Could not create a point!", ex
-
-	    }
-
-    }
-
+		}
+	}
 }
