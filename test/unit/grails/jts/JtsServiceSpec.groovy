@@ -6,15 +6,9 @@ import spock.lang.Specification
 @TestFor(JtsService)
 class JtsServiceSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
     void "test create point with no lat"() {
     	given:
-    		Double lat = null
+    		Double lat
     		Double lng = -56.199747
 		when:
 			def point = service.createPoint(lat, lng)
@@ -25,7 +19,7 @@ class JtsServiceSpec extends Specification {
     void "test create point with no lng"() {
     	given:
     		Double lat = -34.906485
-    		Double lng = null
+    		Double lng
 		when:
 			def point = service.createPoint(lat, lng)
 		then:
